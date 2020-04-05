@@ -1,0 +1,62 @@
+import random
+import  string
+
+def new_user():
+    print('Great! Let\'s get started')
+    while True:
+        first_name = input('Enter a first name using only alphabetic characters: ')
+        if first_name.isalpha():
+            break
+    while True:
+        last_name = input('Enter a last name using only alphabetic characters: ')
+        if last_name.isalpha():
+            break
+    email = input("Email Address > ")
+    user = [first_name, last_name, email]
+    return user
+
+def random_password(new_user):
+    letters = string.ascii_letters
+    length = 5
+    passcode = ''.join(random.choice(letters) for i in range(length))
+    default_password = str(user[0][:2] + user[1][-2:] + passcode)
+    return default_password
+
+status = True
+container = []
+
+while status:
+    user = new_user()
+    password = random_password(user)
+    new_password = input(f"Are you happy with {password} as your new password? Y/N ")
+    password_loop = True
+    while password_loop:
+        if 'y' in new_password.lower():
+            user.append(password)
+            container.append(user)
+            password_loop = False
+        else:
+
+            password_length = True
+            while password_length:
+                password = input("Create a new password with at least 7 characters > ")
+                if len(password) >= 7:
+                    user.append(password)
+                    container.append(user)
+                    password_length = False
+                    password_loop = False
+
+                else:
+                    print("Error:Please choose a password with at least 7 characters > ")
+
+    else:
+        another_user = input('Would you like to make a new user?! Y/N ')
+        if 'y' in another_user:
+            status = True
+        else:
+            status = False
+            for data in container:
+                print(data)
+
+
+
