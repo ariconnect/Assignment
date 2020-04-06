@@ -30,8 +30,8 @@ status = True  # to test whether a new user is required after the first set of i
 container = []  # empty list where all inputs will be warehoused
 
 while status:
-    user = new_user()  # variable assigned to the function to derive user details
-    password = random_password(user)  # variable assigned to the function to derive default password which can be
+    user = new_user()  # object assigned to the function to derive user details
+    password = random_password(user)  # object assigned to the function to derive default password which can be
     # changed later
     new_password = input(f"Are you happy with {password} as your new password? Y/N ")
     password_loop = True  # allow user to create their own password
